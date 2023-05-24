@@ -2,11 +2,12 @@
 from flask import Flask, request
 
 import sqlite3
+import math
 
 def initalize_table():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS datapoints (uid text, key text, value text,UNIQUE(uid))")
+    cursor.execute("CREATE TABLE IF NOT EXISTS datapoints (uid text, key text, value text,UNIQUE(uid,key))")
     conn.commit()
     conn.close()
 
@@ -19,7 +20,8 @@ def add_occurrence(uid,key,value):
     conn.commit()
     conn.close()
 
-def get_rarity(key,value):
+#https://en.wikipedia.org/wiki/Entropy_(information_theory)
+def get_surprisal(key,value):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
 
@@ -31,22 +33,44 @@ def get_rarity(key,value):
 
     conn.commit()
     conn.close()
-    print("matching, total: ",matching,total)
+    if(total==0 or matching==0) or ( (matching==total) and (total==1) ):
+        return 1
+    return math.log2(1/(matching/total))
+
+def get_entropy(key):
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM datapoints WHERE key=? ", (key,))
+    total = cursor.fetchone()[0]
     if(total==0):
-        return 0
-    return matching/total
+        return 1
+    entropy = 0
+
+    cursor.execute("SELECT value,COUNT(value) FROM datapoints WHERE key=? GROUP BY value", (key,))
+    for row in cursor:
+        count = row[1]
+        px=count/total
+        entropy-=px*math.log2(px)
+
+    conn.commit()
+    conn.close()
+    return entropy
 
 app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def handle_data():
     data = request.get_json()
+    ret = {}
+    ret["key_entropy_surprisal"]=[]
     for kpair in data["kpairs"]:
         add_occurrence(data["uid"],kpair["key"],kpair["value"])
-        print(get_rarity(kpair["key"],kpair["value"]))
-    return data
+        ret["key_entropy_surprisal"].append([kpair["key"],
+                                       get_entropy(kpair["key"]),
+                                       get_surprisal(kpair["key"],kpair["value"])])
+    return ret
 
 if __name__ == "__main__":
     initalize_table()
     app.run()
-
