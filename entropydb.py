@@ -3,6 +3,7 @@ from flask import Flask, request
 
 import sqlite3
 import math
+import time
 
 def initalize_table():
     conn = sqlite3.connect('database.db')
@@ -61,6 +62,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def handle_data():
+    start_time=time.time()
     data = request.get_json()
     ret = {}
     ret["key_entropy_surprisal"]=[]
@@ -69,6 +71,7 @@ def handle_data():
         ret["key_entropy_surprisal"].append([kpair["key"],
                                        get_entropy(kpair["key"]),
                                        get_surprisal(kpair["key"],kpair["value"])])
+    print("total request time:",time.time()-start_time," seconds")
     return ret
 
 if __name__ == "__main__":
