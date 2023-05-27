@@ -1,0 +1,20 @@
+starting test...
+total test time: 40.18941330909729  seconds
+         4431255 function calls (4422741 primitive calls) in 40.456 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+    198/1    0.005    0.000   40.456   40.456 {built-in method builtins.exec}
+        1    0.000    0.000   40.456   40.456 entropydb.py:1(<module>)
+        1    0.009    0.009   40.190   40.190 entropydb.py:66(test)
+      100    0.587    0.006   40.180    0.402 entropydb.py:51(handle_data)
+   100100    1.024    0.000   25.644    0.000 entropydb.py:26(get_entropy_surprisal)
+   200202   23.421    0.000   23.421    0.000 {method 'execute' of 'sqlite3.Cursor' objects}
+   100100    0.316    0.000   13.931    0.000 entropydb.py:17(add_occurrence)
+   200201    7.426    0.000   10.780    0.000 {built-in method _sqlite3.connect}
+   200201    3.228    0.000    3.228    0.000 {method 'close' of 'sqlite3.Connection' objects}
+   200206    0.543    0.000    2.972    0.000 functools.py:518(decorating_function)
+   200333    1.096    0.000    2.431    0.000 functools.py:35(update_wrapper)
+  1405422    1.128    0.000    1.128    0.000 {built-in method builtins.getattr}
+       17    0.001    0.000    0.669    0.039 __init__.py:1(<module>)
