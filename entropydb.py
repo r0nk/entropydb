@@ -69,5 +69,5 @@ def test():
 
 if __name__ == "__main__":
     initalize_table()
-    test()
-#    app.run()
+#    test()
+    app.run()

@@ -16,5 +16,5 @@ echo "]}"
 
 #while true; do ./test.sh | http http://127.0.0.1:5000 ; done
 
-python -m cProfile ./entropydb.py | head -n 20 > profile.txt ; cat profile.txt
+#python -m cProfile ./entropydb.py | head -n 20 > profile.txt ; cat profile.txt
 
