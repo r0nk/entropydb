@@ -19,7 +19,7 @@ def add_occurrence(cursor,uid,key,value):
 
 #https://en.wikipedia.org/wiki/Entropy_(information_theory)
 #Getting them both with one call is more efficent
-def get_entropy_surprisal(key,value):
+def get_entropy_surprisal(cursor,key,value):
     entropy = 0
     cursor.execute("SELECT value,COUNT(value),COUNT(*) FROM datapoints WHERE key=? GROUP BY value", (key,))
     for row in cursor:

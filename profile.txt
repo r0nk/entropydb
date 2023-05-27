@@ -1,20 +1,20 @@
 starting test...
-         226972 function calls (218458 primitive calls) in 0.270 seconds
+total test time: 11.422435283660889  seconds
+         829455 function calls (820941 primitive calls) in 11.685 seconds
 
    Ordered by: cumulative time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-       17    0.001    0.000    0.679    0.040 __init__.py:1(<module>)
-    198/1    0.005    0.000    0.270    0.270 {built-in method builtins.exec}
-        1    0.000    0.000    0.270    0.270 entropydb.py:1(<module>)
-    198/2    0.001    0.000    0.266    0.133 <frozen importlib._bootstrap>:1167(_find_and_load)
-    198/2    0.001    0.000    0.266    0.133 <frozen importlib._bootstrap>:1122(_find_and_load_unlocked)
-    183/2    0.001    0.000    0.265    0.133 <frozen importlib._bootstrap>:666(_load_unlocked)
-    156/2    0.000    0.000    0.265    0.132 <frozen importlib._bootstrap_external>:934(exec_module)
-    422/4    0.000    0.000    0.265    0.066 <frozen importlib._bootstrap>:233(_call_with_frames_removed)
-   107/50    0.000    0.000    0.205    0.004 <frozen importlib._bootstrap>:1209(_handle_fromlist)
-     21/4    0.000    0.000    0.205    0.051 {built-in method builtins.__import__}
-        2    0.000    0.000    0.113    0.056 globals.py:1(<module>)
-        1    0.000    0.000    0.067    0.067 app.py:1(<module>)
-  684/683    0.012    0.000    0.062    0.000 {built-in method builtins.__build_class__}
-        1    0.000    0.000    0.057    0.057 serving.py:1(<module>)
+    198/1    0.005    0.000   11.685   11.685 {built-in method builtins.exec}
+        1    0.000    0.000   11.685   11.685 entropydb.py:1(<module>)
+        1    0.006    0.006   11.423   11.423 entropydb.py:61(test)
+      100    0.209    0.002   11.417    0.114 entropydb.py:42(handle_data)
+   100100    0.343    0.000   10.837    0.000 entropydb.py:22(get_entropy_surprisal)
+   200202   10.765    0.000   10.765    0.000 {method 'execute' of 'sqlite3.Cursor' objects}
+       17    0.001    0.000    0.659    0.039 __init__.py:1(<module>)
+   100100    0.055    0.000    0.347    0.000 entropydb.py:17(add_occurrence)
+    198/2    0.001    0.000    0.258    0.129 <frozen importlib._bootstrap>:1167(_find_and_load)
+    198/2    0.001    0.000    0.258    0.129 <frozen importlib._bootstrap>:1122(_find_and_load_unlocked)
+    183/2    0.001    0.000    0.257    0.129 <frozen importlib._bootstrap>:666(_load_unlocked)
+    156/2    0.000    0.000    0.257    0.129 <frozen importlib._bootstrap_external>:934(exec_module)
+    422/4    0.000    0.000    0.257    0.064 <frozen importlib._bootstrap>:233(_call_with_frames_removed)
