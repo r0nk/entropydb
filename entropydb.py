@@ -14,19 +14,12 @@ def initalize_table():
     conn.commit()
     conn.close()
 
-def add_occurrence(uid,key,value):
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
+def add_occurrence(cursor,uid,key,value):
     cursor.execute('INSERT OR IGNORE INTO datapoints VALUES (?, ?, ?)', (uid, key, value))
-    conn.commit()
-    conn.close()
 
 #https://en.wikipedia.org/wiki/Entropy_(information_theory)
 #Getting them both with one call is more efficent
 def get_entropy_surprisal(key,value):
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-
     entropy = 0
     cursor.execute("SELECT value,COUNT(value),COUNT(*) FROM datapoints WHERE key=? GROUP BY value", (key,))
     for row in cursor:
@@ -42,8 +35,6 @@ def get_entropy_surprisal(key,value):
     else:
         surprisal = math.log2(1/(matching/total))
 
-    conn.commit()
-    conn.close()
     return entropy, surprisal
 
 app = Flask(__name__)
@@ -51,10 +42,14 @@ app = Flask(__name__)
 def handle_data(data):
     ret = {}
     ret["key_entropy_surprisal"]=[]
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
     for kpair in data["kpairs"]:
-        add_occurrence(data["uid"],kpair["key"],kpair["value"])
-        e,s =get_entropy_surprisal(kpair["key"],kpair["value"])
+        add_occurrence(cursor,data["uid"],kpair["key"],kpair["value"])
+        e,s =get_entropy_surprisal(cursor,kpair["key"],kpair["value"])
         ret["key_entropy_surprisal"].append([kpair["key"],e,s])
+    conn.commit()
+    conn.close()
     return ret
 
 @app.route('/', methods=['POST'])

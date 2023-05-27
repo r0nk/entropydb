@@ -1,20 +1,20 @@
 starting test...
-total test time: 40.18941330909729  seconds
-         4431255 function calls (4422741 primitive calls) in 40.456 seconds
+         226972 function calls (218458 primitive calls) in 0.270 seconds
 
    Ordered by: cumulative time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-    198/1    0.005    0.000   40.456   40.456 {built-in method builtins.exec}
-        1    0.000    0.000   40.456   40.456 entropydb.py:1(<module>)
-        1    0.009    0.009   40.190   40.190 entropydb.py:66(test)
-      100    0.587    0.006   40.180    0.402 entropydb.py:51(handle_data)
-   100100    1.024    0.000   25.644    0.000 entropydb.py:26(get_entropy_surprisal)
-   200202   23.421    0.000   23.421    0.000 {method 'execute' of 'sqlite3.Cursor' objects}
-   100100    0.316    0.000   13.931    0.000 entropydb.py:17(add_occurrence)
-   200201    7.426    0.000   10.780    0.000 {built-in method _sqlite3.connect}
-   200201    3.228    0.000    3.228    0.000 {method 'close' of 'sqlite3.Connection' objects}
-   200206    0.543    0.000    2.972    0.000 functools.py:518(decorating_function)
-   200333    1.096    0.000    2.431    0.000 functools.py:35(update_wrapper)
-  1405422    1.128    0.000    1.128    0.000 {built-in method builtins.getattr}
-       17    0.001    0.000    0.669    0.039 __init__.py:1(<module>)
+       17    0.001    0.000    0.679    0.040 __init__.py:1(<module>)
+    198/1    0.005    0.000    0.270    0.270 {built-in method builtins.exec}
+        1    0.000    0.000    0.270    0.270 entropydb.py:1(<module>)
+    198/2    0.001    0.000    0.266    0.133 <frozen importlib._bootstrap>:1167(_find_and_load)
+    198/2    0.001    0.000    0.266    0.133 <frozen importlib._bootstrap>:1122(_find_and_load_unlocked)
+    183/2    0.001    0.000    0.265    0.133 <frozen importlib._bootstrap>:666(_load_unlocked)
+    156/2    0.000    0.000    0.265    0.132 <frozen importlib._bootstrap_external>:934(exec_module)
+    422/4    0.000    0.000    0.265    0.066 <frozen importlib._bootstrap>:233(_call_with_frames_removed)
+   107/50    0.000    0.000    0.205    0.004 <frozen importlib._bootstrap>:1209(_handle_fromlist)
+     21/4    0.000    0.000    0.205    0.051 {built-in method builtins.__import__}
+        2    0.000    0.000    0.113    0.056 globals.py:1(<module>)
+        1    0.000    0.000    0.067    0.067 app.py:1(<module>)
+  684/683    0.012    0.000    0.062    0.000 {built-in method builtins.__build_class__}
+        1    0.000    0.000    0.057    0.057 serving.py:1(<module>)
