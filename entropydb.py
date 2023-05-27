@@ -4,6 +4,7 @@ from flask import Flask, request
 import sqlite3
 import math
 import time
+import json
 
 def initalize_table():
     conn = sqlite3.connect('database.db')
@@ -38,6 +39,7 @@ def get_surprisal(key,value):
         return 1
     return math.log2(1/(matching/total))
 
+#TODO fix bottleneck in here
 def get_entropy(key):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
@@ -74,6 +76,22 @@ def handle_data():
     print("total request time:",time.time()-start_time," seconds")
     return ret
 
+def test():
+    start_time=time.time()
+    with open('test.json', 'r') as f:
+            data = json.load(f)
+    ret = {}
+    ret["key_entropy_surprisal"]=[]
+    for kpair in data["kpairs"]:
+        e=get_entropy(kpair["key"])
+        s=get_surprisal(kpair["key"],kpair["value"])
+        add_occurrence(data["uid"],kpair["key"],kpair["value"])
+        ret["key_entropy_surprisal"].append([kpair["key"],e,s])
+    print("total request time:",time.time()-start_time," seconds")
+    return ret
+
+
 if __name__ == "__main__":
     initalize_table()
+#    test()
     app.run()
