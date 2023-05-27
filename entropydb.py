@@ -25,6 +25,7 @@ def get_entropy_surprisal(cursor,key,value):
     cursor.execute("SELECT COUNT(*) FROM datapoints WHERE key=? ", (key,))
     total = cursor.fetchone()[0]
 
+    matching=0
     cursor.execute("SELECT value,COUNT(value) FROM datapoints WHERE key=? GROUP BY value", (key,))
     for row in cursor:
         count = row[1]
