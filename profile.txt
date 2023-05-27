@@ -1,20 +1,50 @@
-starting test...
-total test time: 11.422435283660889  seconds
-         829455 function calls (820941 primitive calls) in 11.685 seconds
+total request time: 0.15608525276184082  seconds, average entropy: 5.385422646090023
+         229931 function calls (221417 primitive calls) in 0.428 seconds
 
    Ordered by: cumulative time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-    198/1    0.005    0.000   11.685   11.685 {built-in method builtins.exec}
-        1    0.000    0.000   11.685   11.685 entropydb.py:1(<module>)
-        1    0.006    0.006   11.423   11.423 entropydb.py:61(test)
-      100    0.209    0.002   11.417    0.114 entropydb.py:42(handle_data)
-   100100    0.343    0.000   10.837    0.000 entropydb.py:22(get_entropy_surprisal)
-   200202   10.765    0.000   10.765    0.000 {method 'execute' of 'sqlite3.Cursor' objects}
-       17    0.001    0.000    0.659    0.039 __init__.py:1(<module>)
-   100100    0.055    0.000    0.347    0.000 entropydb.py:17(add_occurrence)
-    198/2    0.001    0.000    0.258    0.129 <frozen importlib._bootstrap>:1167(_find_and_load)
-    198/2    0.001    0.000    0.258    0.129 <frozen importlib._bootstrap>:1122(_find_and_load_unlocked)
-    183/2    0.001    0.000    0.257    0.129 <frozen importlib._bootstrap>:666(_load_unlocked)
-    156/2    0.000    0.000    0.257    0.129 <frozen importlib._bootstrap_external>:934(exec_module)
-    422/4    0.000    0.000    0.257    0.064 <frozen importlib._bootstrap>:233(_call_with_frames_removed)
+       17    0.001    0.000    0.686    0.040 __init__.py:1(<module>)
+    198/1    0.005    0.000    0.429    0.429 {built-in method builtins.exec}
+        1    0.000    0.000    0.429    0.429 entropydb.py:1(<module>)
+    198/2    0.001    0.000    0.269    0.134 <frozen importlib._bootstrap>:1167(_find_and_load)
+    198/2    0.001    0.000    0.269    0.134 <frozen importlib._bootstrap>:1122(_find_and_load_unlocked)
+    183/2    0.001    0.000    0.268    0.134 <frozen importlib._bootstrap>:666(_load_unlocked)
+    156/2    0.000    0.000    0.268    0.134 <frozen importlib._bootstrap_external>:934(exec_module)
+    422/4    0.000    0.000    0.268    0.067 <frozen importlib._bootstrap>:233(_call_with_frames_removed)
+   107/50    0.000    0.000    0.206    0.004 <frozen importlib._bootstrap>:1209(_handle_fromlist)
+     21/4    0.000    0.000    0.206    0.051 {built-in method builtins.__import__}
+        1    0.000    0.000    0.156    0.156 entropydb.py:70(test)
+        1    0.000    0.000    0.156    0.156 entropydb.py:45(handle_data)
+       58    0.005    0.000    0.155    0.003 entropydb.py:22(get_entropy_surprisal)
+      176    0.150    0.001    0.150    0.001 {method 'execute' of 'sqlite3.Cursor' objects}
+        2    0.000    0.000    0.115    0.057 globals.py:1(<module>)
+        1    0.000    0.000    0.068    0.068 app.py:1(<module>)
+  684/683    0.012    0.000    0.062    0.000 {built-in method builtins.__build_class__}
+        1    0.000    0.000    0.058    0.058 serving.py:1(<module>)
+2655/2447    0.003    0.000    0.055    0.000 typing.py:345(inner)
+      204    0.001    0.000    0.054    0.000 __init__.py:272(_compile)
+       95    0.000    0.000    0.053    0.001 __init__.py:225(compile)
+        1    0.000    0.000    0.052    0.052 test.py:1(<module>)
+       92    0.001    0.000    0.051    0.001 _compiler.py:738(compile)
+        1    0.000    0.000    0.042    0.042 environment.py:1(<module>)
+      194    0.002    0.000    0.040    0.000 <frozen importlib._bootstrap>:1056(_find_spec)
+      191    0.000    0.000    0.035    0.000 <frozen importlib._bootstrap_external>:1496(find_spec)
+      191    0.002    0.000    0.035    0.000 <frozen importlib._bootstrap_external>:1464(_get_spec)
+      156    0.001    0.000    0.035    0.000 <frozen importlib._bootstrap_external>:1007(get_code)
+       92    0.000    0.000    0.034    0.000 _parser.py:970(parse)
+   303/92    0.002    0.000    0.033    0.000 _parser.py:447(_parse_sub)
+   409/98    0.012    0.000    0.032    0.000 _parser.py:507(_parse)
+      928    0.011    0.000    0.031    0.000 <frozen importlib._bootstrap_external>:1604(find_spec)
+  576/368    0.000    0.000    0.030    0.000 typing.py:468(__getitem__)
+        1    0.000    0.000    0.029    0.029 server.py:1(<module>)
+      364    0.003    0.000    0.025    0.000 typing.py:645(Union)
+      156    0.000    0.000    0.023    0.000 <frozen importlib._bootstrap_external>:727(_compile_bytecode)
+      735    0.004    0.000    0.023    0.000 typing.py:1340(__init__)
+      156    0.022    0.000    0.022    0.000 {built-in method marshal.loads}
+        5    0.000    0.000    0.021    0.004 utils.py:1(<module>)
+      208    0.001    0.000    0.018    0.000 typing.py:685(Optional)
+       92    0.000    0.000    0.017    0.000 _compiler.py:571(_code)
+        1    0.000    0.000    0.015    0.015 core.py:1(<module>)
+        1    0.000    0.000    0.015    0.015 client.py:1(<module>)
+     1542    0.007    0.000    0.015    0.000 typing.py:168(_type_check)

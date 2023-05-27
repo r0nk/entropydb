@@ -9,7 +9,11 @@
 echo "{\"uid\":\"$RANDOM\",\"kpairs\":["
 cat little_word_list.txt | while read line;
 do
-	echo "{\"key\":\"$line\",\"value\":\"$RANDOM\"},"
+	if [ $[ $RANDOM % 2 ] = 0 ]; then
+		echo "{\"key\":\"$line\",\"value\":\"$RANDOM\"},"
+	else
+		echo "{\"key\":\"$line\",\"value\":\"SAME\"},"
+	fi
 done
 echo "{\"key\":\"$line\",\"value\":\"$RANDOM\"}"
 echo "]}"
