@@ -10,7 +10,8 @@ def initalize_table():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS datapoints (uid text, key text, value text,UNIQUE(uid,key))")
-    cursor.execute("pragma optimize;")
+    cursor.execute("CREATE INDEX IF NOT EXISTS keyindex ON datapoints(key)")
+    cursor.execute("PRAGMA optimize;")
     conn.commit()
     conn.close()
 
