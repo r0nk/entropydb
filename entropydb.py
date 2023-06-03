@@ -23,12 +23,15 @@ def add_occurrence(cursor,uid,key,value):
 def get_entropy_surprisal(cursor,key,value):
     entropy = 0
 
-    cursor.execute("SELECT COUNT(*) FROM datapoints WHERE key=? ", (key,))
-    total = cursor.fetchone()[0]
+    total=0
 
     matching=0
     cursor.execute("SELECT value,COUNT(value) FROM datapoints WHERE key=? GROUP BY value", (key,))
-    for row in cursor:
+    rows = cursor.fetchall()
+
+    for row in rows:
+        total+=row[1]
+    for row in rows:
         count = row[1]
         px=count/total
         entropy-=px*math.log2(px)
@@ -80,5 +83,5 @@ def test():
 
 if __name__ == "__main__":
     initalize_table()
-#    test()
-    app.run()
+    test()
+#    app.run()
