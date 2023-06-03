@@ -50,8 +50,11 @@ def handle_data(data):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     avg_e=0
+    #we separate these loops in order to improve reliability of database writes
     for kpair in data["kpairs"]:
         add_occurrence(cursor,data["uid"],kpair["key"],kpair["value"])
+    conn.commit()
+    for kpair in data["kpairs"]:
         e,s =get_entropy_surprisal(cursor,kpair["key"],kpair["value"])
         avg_e+=e
         ret["key_entropy_surprisal"].append([kpair["key"],e,s])
@@ -59,7 +62,7 @@ def handle_data(data):
     conn.close()
     avg_e/=len(data["kpairs"])
     ret["avg_entropy"]=avg_e
-    print("total request time:",time.time()-start_time," seconds, average entropy:",avg_e)
+    print("[",len(data["kpairs"]),"] request time:",time.time()-start_time," seconds, average entropy:",avg_e,)
     return ret
 
 @app.route('/', methods=['POST'])
