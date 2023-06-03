@@ -1,10 +1,11 @@
 #!/bin/env python3
-from flask import Flask, request
 
 import sqlite3
 import math
 import time
 import json
+
+from flask import Flask, request
 
 def initalize_table():
     conn = sqlite3.connect('database.db')
@@ -36,10 +37,10 @@ def get_entropy_surprisal(cursor,key,value):
         count = row[1]
         px=count/total
         entropy-=px*math.log2(px)
-        if(row[0]==value):
+        if row[0]==value:
             matching=count
 
-    if(total==0 or matching==0) or ( (matching==total) and (total==1) ):
+    if (total==0 or matching==0) or ( (matching==total) and (total==1) ):
         surprisal=1
     else:
         surprisal = math.log2(1/(matching/total))
@@ -72,15 +73,13 @@ def handle_data(data):
 
 @app.route('/', methods=['POST'])
 def handle_post():
-    start_time=time.time()
-    data = request.get_json()
-    return handle_data(data)
+    return handle_data(request.get_json())
 
 def test():
     with open('test.json', 'r') as f:
-            data = json.load(f)
-    for i in range(1):
-        handle_data(data)
+        data = json.load(f)
+    #for i in range(100):
+    handle_data(data)
 
 if __name__ == "__main__":
     initalize_table()
