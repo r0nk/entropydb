@@ -11,6 +11,7 @@ def initalize_table():
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS datapoints (uid text, key text, value text,UNIQUE(uid,key))")
     cursor.execute("CREATE INDEX IF NOT EXISTS keyindex ON datapoints(key)")
+   #cursor.execute("CREATE INDEX IF NOT EXISTS keyvalindex ON datapoints(key,value)")
     cursor.execute("PRAGMA optimize;")
     conn.commit()
     conn.close()
@@ -83,5 +84,5 @@ def test():
 
 if __name__ == "__main__":
     initalize_table()
-    test()
-#    app.run()
+#    test()
+    app.run()
